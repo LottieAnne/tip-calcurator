@@ -1,5 +1,6 @@
 package com.example.tip_calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +16,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -56,9 +61,10 @@ fun TipCalculatorScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNumberField() {
+    var amountInput by remember { mutableStateOf("") }
     TextField(
-        value = "",
-        onValueChange = {}
+        value = amountInput,
+        onValueChange = { amountInput = it }
     )
 }
 
